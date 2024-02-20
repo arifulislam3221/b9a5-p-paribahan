@@ -46,7 +46,7 @@ console.log('hello');
 // }
 
 const getSeats = document.getElementsByClassName('seat');
-let totalSeatNumber;
+let totalPrice = 0;
 for(let seat of getSeats){
     // console.log(seat);
     seat.addEventListener('click', function(e){
@@ -55,9 +55,79 @@ for(let seat of getSeats){
 
         // let bbc = incressValue()
         // console.log(bbc);
-
+//total number of booking seat;
         let bookingSeat = document.getElementById('booking-seat');
         bookingSeat.innerText = incressValue(parseInt(bookingSeat.innerText));
+
+        // let setSeatNumber = document.getElementById('seat-number1');
+        // setSeatNumber.innerText = seat.innerText;
+        
+        // const bookingSeatNumber = document.getElementsByClassName('seat-number')
+        // for(let bookingSeats of bookingSeatNumber){
+        //     // console.log(bookingSeats);
+        //     // let setSeatNumber = document.getElementById('seat-number1');
+        //     bookingSeats.innerText = seat.innerText;
+        //     // const isVisible = bookingSeats.classList.remove('hidden');
+        //     let tableRow = document.getElementsByClassName('tr');
+        //     for(let row of tableRow){
+        //         row.classList.remove('hidden');
+        //     }
+        //     // const removeHidden = bookingSeats.classList.remove('hidden');
+        //     // const removeHiddenClass = tableRow.classList.remove('hidden')
+
+        // }
+        const liContainer = document.getElementById('li-container');
+        const li = document.createElement('li');
+
+        const p1 = document.createElement('p');
+        p1.innerText = seat.innerText;
+        const p2 = document.createElement('p');
+        p2.innerText = 'Economy';
+        const p3 = document.createElement('p');
+        p3.innerText = 550;
+        let p3Value = parseInt(p3.innerText);
+        // console.log(typeof p3Value);
+
+        li.appendChild(p1);
+        li.appendChild(p2);
+        li.appendChild(p3);
+
+        liContainer.appendChild(li)
+
+
+        // const totalPrice = 
+
+        // let addCost = p3Value;
+        // console.log(addCost + 1);
+        // let totalCost = document.getElementById('total-price').innerText;
+        // parseFloat(totalCost);
+        let totalCost = parseInt(document.getElementById('total-price').innerText);
+        let abc = addPrice(p3Value);
+        totalCost.innerText = abc.innerText;
+        console.log(totalCost);
+        // addPrice(p3Value);
+
+
+
+        //// let addTotalPrice = document.getElementById('total-price').innerText;
+        // let addTotalPrice = ;
+        // let totalCost = parseInt(document.getElementById('total-price').innerText);
+
+        // let setTotalvalue = addPrice(p3Value);
+        // totalCost.innerText = setTotalvalue.innerText;
+        // console.log(totalCost);
+
+        // console.log(addPrice(p3Value))
+        // console.log(parseInt(p3.innerText));
+        // totalCost += p3Value;  
+        // console.log(totalCost);
+        // totalCost = totalCost.innerText;
+
+        // const convertedTotal = parseInt(totalCost);
+        // document.getElementById('total-price').innerText = convertedTotal + parseInt(totalCost);
+
+
+
         // let initialSeatLeft = document.getElementById('seats-left')
         // initialSeatLeft.innerText = decressValue(parseInt(initialSeatLeft.innerText));
                 // bookingSeat += 1;
@@ -139,6 +209,10 @@ for(let seat of getSeats){
 //         })
 //     }
 // }
+function addPrice(price){
+    return totalPrice = totalPrice + price;
+}
+
 function decressValue(id){
     return id -= 1;
 }
@@ -160,3 +234,8 @@ function btnDisableMaker(){
 
 // let a = decressValue(setTotalSeat);
 // console.log(a);
+
+// const bookingSeatNumber = document.getElementsByClassName('seat-number')
+//         for(let bookingSeats of bookingSeatNumber){
+//             console.log(bookingSeats);
+//         }
