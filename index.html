@@ -183,7 +183,7 @@
                             </div>
                             <div>
                                 <button class="bg-[#1cd1004d] btn">
-                                    <img src="./images/seat-green.png" alt=""><span>40</span><span>Seats left</span>
+                                    <img src="./images/seat-green.png" alt=""><span id="seats-left" class="">40</span><span>Seats left</span>
                                 </button>
                             </div>
                         </div>
@@ -253,7 +253,7 @@
                                 </div>
                                 <div class="gap-6 lg:gap-[66px] flex flex-col  lg:flex lg:flex-row">
                                     <div class="flex gap-[32px]">
-                                        <button class="seat btn w-[110px] h-[56px] rounded-xl bg-[#f7f8f8]">A1</button>
+                                        <button id="a1" class="seat btn w-[110px] h-[56px] rounded-xl bg-[#f7f8f8]">A1</button>
                                         <button class="seat btn w-[110px] h-[56px] rounded-xl bg-[#f7f8f8]">A2</button>
                                     </div>
                                     <div class="flex gap-[32px]">
@@ -410,13 +410,16 @@
                     </div>
                     <!-- set selecting -->
                     <div class="mt-8 pl-8 flex flex-col border-l-2 border-dashed border-[#f7f8f8]">
-                        <div class="pb-6 border-b border-dashed border-[#f7f8f8]"><h1 class="text-[#030712] text-[24px] font-semibold">Select Your Seat</h1></div>
+                        <div class="pb-6 mb-6 border-b border-dashed border-[#030712]">
+                            <h1 class="text-[#030712] text-[24px] font-semibold">Select Your Seat</h1>
+                        </div>
                         <div class="flex flex-col lg:w-[433px]  rounded-xl p-8 bg-[#f7f8f8]">
                             
                             <div class="flex justify-between ">
-                                <h1 class="font-medium">
-                                    Seat <span>0</span>
+                                <h1 class="font-semibold">
+                                    Seat <span id="booking-seat">0</span>
                                 </h1>
+                                <!-- <button class="btn" onclick="incressValue()">incressalue</button> -->
                                 <h1 class="font-medium">Class</h1>
                                 <h1 class="font-medium">
                                     Price
@@ -424,24 +427,33 @@
                             </div>
                             <!-- dynamic -->
                             <div class="flex flex-col border-dashed py-4 my-4 border-y border-[#0307120D]">
-                                <div class="flex flex-row justify-between ">
-                                    <p><span>C2</span></p>
-                                    <p>Economy</p>
-                                    <p><span>550</span></p>
-                                </div>
+                                <table id="table" class="w-full table-auto border border-collapse border-black">
+                                    <tr>
+                                        <td id="seat-number1" class="border border-black text-left"></td><td class="border border-black text-center">Economy</td><td class="border border-black text-right">550</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="seat-number2" class="border border-black text-left"></td><td class="border border-black text-center">Economy</td><td class="border border-black text-right">550</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="seat-number3" class="border border-black text-left"></td><td class="border border-black text-center">Economy</td><td class="border border-black text-right">550</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="seat-number4" class="border border-black text-left"></td><td class="border border-black text-center">Economy</td><td class="border border-black text-right">550</td>
+                                    </tr>
+                                </table>
                             </div>
                             <div class="flex flex-col">
                                 <div class="flex justify-between mb-4">
-                                    <h1 class="font-medium">Total Price</h1>
-                                    <p class="font-medium">BDT <span>0</span></p>
+                                    <h1 class="font-semibold">Total Price</h1>
+                                    <p class="font-semibold">BDT <span id="total-price">0</span></p>
                                 </div>
                                 <div class="flex justify-between bg-white rounded-xl lg:p-2">
                                     <input type="text" placeholder="Have any coupom?" class="outline-none px-5">
                                     <button class="bg-[#1DD100] text-white btn">Apply</button>
                                 </div>
                                 <div class="flex justify-between mt-6">
-                                    <h1 class="font-medium">Grand Total</h1>
-                                    <p class="font-medium">BDT <span>0</span></p>
+                                    <h1 class="font-semibold">Grand Total</h1>
+                                    <p class="font-semibold">BDT <span id="grand-total">0</span></p>
                                 </div>
                             </div>
                         </div>
@@ -482,7 +494,7 @@
                               </div>
                             <div class="flex justify-evenly">
                                 <a href=""><h1><u>Terms and Conditions</u></h1></a>
-                                <a href=""><h1><u>Cancellstion Policy</u></h1></a>
+                                <a href=""><h1><u>Cancellation Policy</u></h1></a>
                             </div>
                         </div>
                     </div>
@@ -494,7 +506,7 @@
         <div class="flex flex-col ">
             <div class="flex flex-col py-12 lg:flex lg:flex-row lg:justify-between">
                 <aside>
-                    <p><span class="text-[36px] font-extrabold">P Paribahan</span><br><span class="text-[18px]">P Paribahan is a digital platform to make your</span> <br><span class="text-[18px]"> daily commuting better.</span></p>
+                    <p><span class="text-[36px] font-extrabold">P-Paribahan</span><br><span class="text-[18px]">P Paribahan is a digital platform to make your</span> <br><span class="text-[18px]"> daily commuting better.</span></p>
                   </aside> 
                   <nav>
                     <h6 class="font-bold lg:text-center">Download our app</h6> 
