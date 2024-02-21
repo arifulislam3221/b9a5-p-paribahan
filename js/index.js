@@ -1,84 +1,35 @@
 console.log('hello');
-// const a1 = document.getElementsByClassName('seat').addEventListener('click', function(e){
-//     for(let seats of a1){
-//         console.log(seats);
-//     }
-//     // a1.style.backgroundColor = 'green';
-    
-    // const seatsLeft = document.getElementById('seats-left');
-//     // // console.log();
-//     // // ;
-    // let totalSeatLeft = parseInt(seatsLeft.innerText) - 1;
-    // // totalSeatLeft - 1;
-    // console.log(totalSeatLeft);
-//     // // let totalSeat = seatsLeft.innerText;
-    
-//     // // for(let i = 0; i < parseInt(seatsLeft.innerText); i++){
-//     // //     let totalSeats = totalSeatLeft - i;
-//     // //     console.log(totalSeats);
-//     // // }
-//     // console.log('hi');
-// })
 
-// const seats = document.getElementsByClassName('seat');
-// for(let seat of seats){
-//     // console.log(seat);
-//     seat.addEventListener('click', function(e){
-//         seat.style.backgroundColor = '#1dd100';
-//         const seatsLeft = document.getElementById('seats-left');
-//         let totalSeatLeft = parseInt(seatsLeft.innerText) - 1;
-//     // totalSeatLeft - 1;
-//     console.log(totalSeatLeft);
-
-//     })
-// }
-// const seats = document.getElementsByClassName('seat');
-
-// for (let seat of seats) {
-//     seat.addEventListener('click', function(e) {
-//         if (!seat.classList.contains('booked')) { // Check if the seat is available
-//             seat.style.backgroundColor = '#1dd100'; // Change background color
-//             const seatLeft = document.getElementById('seats-left');
-//             let totalSeatLeft = parseInt(seatLeft.innerText) - 1;
-//             seatLeft.innerText = totalSeatLeft; // Update the total number of seats left
-//         }
-//     });
-// }
-
+//let find every class add event in each class
 const getSeats = document.getElementsByClassName('seat');
 let totalPrice = 0;
 for(let seat of getSeats){
     // console.log(seat);
     seat.addEventListener('click', function(e){
-        
-        seat.style.backgroundColor = '#1dd100';
+        //disable seats
+        let initialSeatLeft = document.getElementById('seats-left')
 
-        // let bbc = incressValue()
-        // console.log(bbc);
-//total number of booking seat;
+        initialSeatLeft.innerText = decressValue(parseInt(initialSeatLeft.innerText));
+        seat.disabled = true;
+        if(parseInt(initialSeatLeft.innerText) === 36){
+            btnDisableMaker();
+            
+        }
+        //set bg & text color for selected seats
+        seat.style.backgroundColor = '#1dd100';
+        seat.style.color = 'white';
+
+        //total number of booking seat;
         let bookingSeat = document.getElementById('booking-seat');
         bookingSeat.innerText = incressValue(parseInt(bookingSeat.innerText));
+        bookingSeat.style.backgroundColor = '#1dd100';
+        bookingSeat.style.color = 'white';
 
-        // let setSeatNumber = document.getElementById('seat-number1');
-        // setSeatNumber.innerText = seat.innerText;
-        
-        // const bookingSeatNumber = document.getElementsByClassName('seat-number')
-        // for(let bookingSeats of bookingSeatNumber){
-        //     // console.log(bookingSeats);
-        //     // let setSeatNumber = document.getElementById('seat-number1');
-        //     bookingSeats.innerText = seat.innerText;
-        //     // const isVisible = bookingSeats.classList.remove('hidden');
-        //     let tableRow = document.getElementsByClassName('tr');
-        //     for(let row of tableRow){
-        //         row.classList.remove('hidden');
-        //     }
-        //     // const removeHidden = bookingSeats.classList.remove('hidden');
-        //     // const removeHiddenClass = tableRow.classList.remove('hidden')
 
-        // }
         const liContainer = document.getElementById('li-container');
+        
         const li = document.createElement('li');
-
+ 
         const p1 = document.createElement('p');
         p1.innerText = seat.innerText;
         const p2 = document.createElement('p');
@@ -86,7 +37,6 @@ for(let seat of getSeats){
         const p3 = document.createElement('p');
         p3.innerText = 550;
         let p3Value = parseInt(p3.innerText);
-        // console.log(typeof p3Value);
 
         li.appendChild(p1);
         li.appendChild(p2);
@@ -94,121 +44,83 @@ for(let seat of getSeats){
 
         liContainer.appendChild(li)
 
+//coupon and discount
 
-        // const totalPrice = 
+        let totalCostElement = document.getElementById('total-price');
+        let grandCostElement = document.getElementById('grand-total');
 
-        // let addCost = p3Value;
-        // console.log(addCost + 1);
-        // let totalCost = document.getElementById('total-price').innerText;
-        // parseFloat(totalCost);
-        let totalCost = parseInt(document.getElementById('total-price').innerText);
-        let abc = addPrice(p3Value);
-        totalCost.innerText = abc.innerText;
-        console.log(totalCost);
-        // addPrice(p3Value);
+        let totalTicketPrice = addPrice(p3Value);
+        totalCostElement.innerText = totalTicketPrice.toString();
+        let totalCost = parseFloat(totalCostElement.innerText);
 
+        // Set the initial grand total cost
+        let totalGrandCost = totalCost;
+        grandCostElement.innerText = totalGrandCost.toString();
 
+        const removeDisabledAttribute = document.getElementById('apply');
+        const applyCoupon = document.getElementById('any-coupon');
+        const couponField = document.getElementById('coupon-field');
 
-        //// let addTotalPrice = document.getElementById('total-price').innerText;
-        // let addTotalPrice = ;
-        // let totalCost = parseInt(document.getElementById('total-price').innerText);
+        removeDisabledAttribute.setAttribute('disabled', 'true');
 
-        // let setTotalvalue = addPrice(p3Value);
-        // totalCost.innerText = setTotalvalue.innerText;
-        // console.log(totalCost);
+        applyCoupon.addEventListener('keyup', function(e) {
+            if ((applyCoupon.value === 'NEW15' || applyCoupon.value === 'Couple 20') && (parseInt(initialSeatLeft.innerText) === 36)) {
+                removeDisabledAttribute.removeAttribute('disabled');
+            } else {
+                removeDisabledAttribute.setAttribute('disabled', 'true');
+            }
+        });
 
-        // console.log(addPrice(p3Value))
-        // console.log(parseInt(p3.innerText));
-        // totalCost += p3Value;  
-        // console.log(totalCost);
-        // totalCost = totalCost.innerText;
+        removeDisabledAttribute.addEventListener('click', function(e) {
+            if (applyCoupon.value === 'NEW15') {
+                // 15% discount
+                let discount = 2200 * 0.15;// sorry, koyek ghonta somoy nosto koreo variable diye total price hisab korte na peye evabe sorasori likhe diyechi... ami asha korchi ei byaparta recap korte parbo InShaAllah. apatoto matha kaj korchena... Sorry.
+                let totalDiscount = 2200 - discount;
 
-        // const convertedTotal = parseInt(totalCost);
-        // document.getElementById('total-price').innerText = convertedTotal + parseInt(totalCost);
+                applyCoupon.value = '';
 
+                const discountPrice = document.getElementById('discount-price');
+                const li2 = document.createElement('li');
+                const discountP1 = document.createElement('p');
+                discountP1.innerText = 'Total Discount Price';
+                const discountP2 = document.createElement('p');
+                discountP2.innerText = discount;
 
+                li2.appendChild(discountP1);
+                li2.appendChild(discountP2);
+                discountPrice.appendChild(li2);
+                couponField.classList.add('hidden');
 
-        // let initialSeatLeft = document.getElementById('seats-left')
-        // initialSeatLeft.innerText = decressValue(parseInt(initialSeatLeft.innerText));
-                // bookingSeat += 1;
-                // incressValue(parseInt(document.getElementById('booking-seat').innerText)) = bookingSeat.innerText;
-                // incressValue(bookingSeat) = bookingSeat.innerText;
-                // // console.log(bookingSeat);
-                // console.log(incressValue(bookingSeat.innerText));
-                // console.log(bb);
+                totalGrandCost = totalDiscount;
+                grandCostElement.innerText = totalGrandCost.toString();
+            } else if (applyCoupon.value === 'Couple 20') {
+                // 20% discount
+                let discount = 2200 * 0.20;
+                let totalDiscount = 2200 - discount;
 
+                applyCoupon.value = '';
 
-        // countSeatBooking();
-        // const seatName = getSeats.innerText;
-        const isBooked = seat.classList.add('booked');
-        const seatNumber = seat.classList.add(seat.innerText);
+                const discountPrice = document.getElementById('discount-price');
+                const li2 = document.createElement('li');
+                const discountP1 = document.createElement('p');
+                discountP1.innerText = 'Total Discount Price';
+                const discountP2 = document.createElement('p');
+                discountP2.innerText = discount;
 
-        
+                li2.appendChild(discountP1);
+                li2.appendChild(discountP2);
+                discountPrice.appendChild(li2);
+                couponField.classList.add('hidden');
 
-
-        let initialSeatLeft = document.getElementById('seats-left')
-        // const initialSeatLeftNumber = parseInt(initialSeatLeft);
-        // let currentSeat = parseInt(initialSeatLeft.innerText);
-        // let a = decressValue(currentSeat);
-        // let a = decressValue(parseInt(initialSeatLeft.innerText));
-        initialSeatLeft.innerText = decressValue(parseInt(initialSeatLeft.innerText));
-        seat.disabled = true;
-        if(parseInt(initialSeatLeft.innerText) === 36){
-            btnDisableMaker();
-            // seat.forEach(function(seat) {
-            //     // if (!seat.disabled) {
-            //     //     seat.disabled = true;
-            //     // }
-            // });
-        }
-        // if (clickedCount === 4) {
-        //     buttons.forEach(function(btn) {
-        //         if (!btn.disabled) {
-        //             btn.disabled = true;
-        //         }
-        //     });
-        // }
-        // console.log(a);
-
-        // for(let a = currentSeat; a > 0; a--){
-        //     totalSeatNumber = a;
-        //     // if () {
-                
-        //     // }
-        //     console.log(totalSeatNumber);
-        // }
-        // for
-        // totalSeatNumber = totalSeat - 1;
-        // console.log(totalSeatNumber);
-        
-        // console.log(seat);
-        // if((seat.classList.contains === isBooked ) && (seat.classList.contains === seatNumber)){
-        //     console.log('hey');
-        // }
-        // else{
-        //     console.log('why?')
-        // }
+                totalGrandCost = totalDiscount;
+                grandCostElement.innerText = totalGrandCost.toString();
+            } else {
+                applyCoupon.value = ''; 
+            }
+        });
     })
 }
-// let setTotalSeat = 40;
-// const seatLeft = document.getElementById('seat-left');
-// function countSeatBooking(){
-//     const getSeats = document.getElementsByClassName('seat');
-//     // let seatBooking = 0;
-//     for(let seat of getSeats){
-//         seat.addEventListener('click', function(e){
-            
-//             let bookingSeat = parseInt(document.getElementById('booking-seat'));
-            
-//             // let bookingSeat = document.getElementById('booking-seat');
-//             bookingSeat.innerText += 1;
-//             // let totalSeatBookingNumber =  parseInt(bookingSeat.innerText) += 1;
-//             // let totalSeatBookingNumber = bookingSeat.innerText;
-//             // bookingSeat.innerText = 
-//             // const seatBookngNumber = 
-//         })
-//     }
-// }
+
 function addPrice(price){
     return totalPrice = totalPrice + price;
 }
@@ -219,8 +131,6 @@ function decressValue(id){
 function incressValue(value){
     return value += 1;
 }
-// let bb = incressValue(0)
-// console.log(bb);
 
 function btnDisableMaker(){
     const getSeats = document.getElementsByClassName('seat');
@@ -229,13 +139,18 @@ function btnDisableMaker(){
     }
 }
 
-// let abc = btnDisableMaker();
-// console.log(abc);
+const phoneNumberInput = document.getElementById('phone-number');
+phoneNumberInput.value = '';
 
-// let a = decressValue(setTotalSeat);
-// console.log(a);
+const nextButton = document.getElementById('next-btn');
+nextButton.setAttribute('disabled', 'true');
 
-// const bookingSeatNumber = document.getElementsByClassName('seat-number')
-//         for(let bookingSeats of bookingSeatNumber){
-//             console.log(bookingSeats);
-//         }
+phoneNumberInput.addEventListener('keyup', function(e) {
+    const phoneNumber = phoneNumberInput.value;
+    const length = phoneNumber.length;
+    if (length === 11 && !isNaN(parseInt(phoneNumber))) {
+        nextButton.removeAttribute('disabled');
+    } else {
+        nextButton.setAttribute('disabled', 'true');
+    }
+});

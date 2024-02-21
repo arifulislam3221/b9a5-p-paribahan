@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P-Paribahan</title>
     <link rel="stylesheet" href="./styles/style.css">
-    <!--  -->
-
     <!-- daisy -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -50,17 +48,13 @@
                   <div class="max-w-md">
                     <h1 class="mb-5 text-5xl font-bold">End-to-End Travel with <br><span class="text-[#1DD100]">P Paribahan</span></h1>
                     <p class="mb-5">Experience seamless travel with P Paribahan, providing end-to-end solutions for all your transportation needs. Reliable, efficient, and convenient.</p>
-                    <button class="btn bg-[#1DD100] font-bold">Buy Tickets</button>
+                    <!-- <button id="buy-tickets" class="btn bg-[#1DD100] font-bold">Buy Tickets</button> -->
+                    <a href="#ph-paribahan" class=""><button id="buy-tickets" class="btn bg-[#1DD100] font-bold">Buy Tickets</button></a>
                   </div>
                 </div>
               </div>
         </div>
         <!-- floting -->
-        <!-- <div class="bg-green-500 border border-yellow-500 ">
-            <div class="w-full bg-red-600 lg:relative">
-                
-            </div>
-        </div> -->
         <div class="flex flex-col mt-3 gap-5 bg-black-300 justify-center lg:flex lg:flex-row lg:-translate-y-20">
             <div class="w-full flex gap-3  border-b-2 p-8 bg-white border-[#1DD100] rounded-3xl lg:w-[308px] lg:h-[138px]">
                 <div>
@@ -152,7 +146,7 @@
             </div>
         </section>
         <!-- ph paribahan -->
-        <section class="bg-[#f7f8f8] border-t-4 border-[#1dd100] rounded-[32px]">
+        <section id="ph-paribahan" class="bg-[#f7f8f8] border-t-4 border-[#1dd100] rounded-[32px]">
             <!-- title & heading -->
             <div class="mx-auto lg:w-[1171px]">
                 <div class="flex flex-col text-center my-12">
@@ -409,11 +403,11 @@
                         </div>
                     </div>
                     <!-- set selecting -->
-                    <div class="mt-8 pl-8 flex flex-col border-l-2 border-dashed border-[#f7f8f8]">
+                    <div class="mt-8 p-4 lg:pl-8 flex flex-col justify-center border-l-2 border-dashed border-[#030712]">
                         <div class="pb-6 mb-6 border-b border-dashed border-[#030712]">
                             <h1 class="text-[#030712] text-[24px] font-semibold">Select Your Seat</h1>
                         </div>
-                        <div class="flex flex-col lg:w-[433px]  rounded-xl p-8 bg-[#f7f8f8]">
+                        <div class="flex flex-col lg:w-[433px] rounded-xl p-8 bg-[#f7f8f8]">
                             
                             <div class="flex justify-between ">
                                 <h1 class="font-semibold">
@@ -432,29 +426,20 @@
                                         
                                     </ul>
                                 </div>
-                                <!-- <table id="table" class="w-full table-auto border border-collapse border-black">
-                                    <tr class="hidden tr">
-                                        <td id="seat-number1" class="seat-numbe text-left"></td><td class=" text-center">Economy</td><td class=" text-right">550</td>
-                                    </tr>
-                                    <tr class="hidden tr">
-                                        <td id="seat-number2" class="seat-numbe text-left"></td><td class=" text-center">Economy</td><td class=" text-right">550</td>
-                                    </tr>
-                                    <tr class="hidden tr">
-                                        <td id="seat-number3" class="seat-numbe text-left"></td><td class=" text-center">Economy</td><td class=" text-right">550</td>
-                                    </tr>
-                                    <tr class="hidden tr">
-                                        <td id="seat-number4" class="seat-numbe text-left"></td><td class=" text-center">Economy</td><td class=" text-right">550</td>
-                                    </tr>
-                                </table> -->
                             </div>
                             <div class="flex flex-col">
                                 <div class="flex justify-between mb-4">
                                     <h1 class="font-semibold">Total Price</h1>
                                     <p class="font-semibold">BDT <span id="total-price">0</span></p>
                                 </div>
-                                <div class="flex justify-between bg-white rounded-xl lg:p-2">
-                                    <input type="text" placeholder="Have any coupom?" class="outline-none px-5">
-                                    <button class="bg-[#1DD100] text-white btn">Apply</button>
+                                <div class="flex justify-between mb-4">
+                                    <ul id="discount-price">
+
+                                    </ul>
+                                </div>
+                                <div id="coupon-field" class="flex justify-between bg-white rounded-xl lg:p-2">
+                                    <input id="any-coupon" type="text" placeholder="Have any coupon?" class="outline-none px-5">
+                                    <button id="apply" class="bg-[#1DD100] text-white btn" disabled>Apply</button>
                                 </div>
                                 <div class="flex justify-between mt-6">
                                     <h1 class="font-semibold">Grand Total</h1>
@@ -466,7 +451,7 @@
                             <label for="" class="font-semibold">Passenger Name</label><br><br>
                             <input type="text" placeholder="Enter Your Name*" class="lg:w-[433px] rounded-xl px-6 py-5 border border-[#f7f8f8a9] outline-none"><br><br>
                             <label for="" class="font-semibold">Phone Number</label><br><br>
-                            <input type="text" placeholder="Enter Your phone number*" class="lg:w-[433px] rounded-xl px-6 py-5 border border-[#f7f8f8a9] outline-none"><br><br>
+                            <input id="phone-number" type="number" placeholder="Enter Your phone number*" class="lg:w-[433px] rounded-xl px-6 py-5 border border-[#f7f8f8a9] outline-none"><br><br>
                             <label for="" class="font-semibold">Email ID</label><br><br>
                             <input type="email" placeholder="Enter Your email id*" class="lg:w-[433px] rounded-xl px-6 py-5 border border-[#f7f8f8a9] outline-none"><br><br>
 
@@ -474,8 +459,7 @@
                         <div>
                             <!-- <button class=" btn">Next</button> -->
                             <div>
-                                <!-- You can open the modal using ID.showModal() method -->
-                                <button class="w-full mb-6 btn bg-[#1DD100] text-white" onclick="my_modal_3.showModal()">Next</button>
+                                <button id="next-btn" disabled class="w-full mb-6 btn bg-[#1DD100] text-white" onclick="my_modal_3.showModal()">Next</button>
                                 <dialog id="my_modal_3" class="modal">
                                 <div class="modal-box">
                                     
